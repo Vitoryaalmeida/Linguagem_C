@@ -22,7 +22,7 @@ for ( i = 0; i < 20; i++){
 	
 }
 	media /= 20;
-	printf("Média: %2f\n", media);
+	printf("MÃ©dia: %2f\n", media);
 	
 for (i = 0; i < 20; i++){
 	if ( notas[i] > media){
@@ -30,7 +30,7 @@ for (i = 0; i < 20; i++){
 	}
 }
 	
-	printf("Quantidade de estudantes acima da média: %d", quantidade_acima_media);
+	printf("Quantidade de estudantes acima da mÃ©dia: %d", quantidade_acima_media);
 		
 	return 0;
 }
