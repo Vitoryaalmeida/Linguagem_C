@@ -1,22 +1,24 @@
-#include<stdio.h>
+#include <stdio.h>
+#include<locale.h>
 
-int main (){
-	
-//Ler um valor e escrever se e positivo ou negativo (considere o valor zero como positivo)	
+int main() {
+	//Escreva um programa que contenha duas vari´aveis inteiras. Compare seus endere¸cos e exiba o maior endere¸co.
+	setlocale(LC_ALL,"Portuguese");
+    int a = 30;
+    int b = 20;
 
-int valor;
+    
+    int *p_a = &a;
+    int *p_b = &b;
 
-printf("Digite um valor:  ");
-scanf("%d", &valor);
+    
+    if (&a > &b) {
+        printf("O maior endereço é: %p (variável 'a')\n",(void*)*p_a);
+    } else if (&a < &b) {
+        printf("O maior endereço é: %p (variável 'b')\n", (void*)*p_b);
+    } 
+      
+    
 
-if (valor >= 0){
-	printf ("O valor e POSITIVO. \n");
-	
-}  else {
-	printf ("O valor e NEGATIVO. \n");
-}
-	
-	
-	
-	return 0;
+    return 0;
 }

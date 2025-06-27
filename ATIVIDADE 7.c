@@ -1,22 +1,32 @@
-#include<stdio.h>
+#include <stdio.h>
+#include<locale.h>
 
-int main (){
-//Ler dois valores (considere que nao serao lidos valores iguais) e escreve-los em ordem crescente
-
-int N1,N2;
-
-printf("Digite o primeiro valor: ");
-scanf("%d",&N1);
-
-printf("Digite o segundo valor: ");
-scanf("%d",&N2);
+//Escreva uma fun¸c˜ao que dado um n´umero real passado como parˆametro, retorne a parte inteira e a parte
+//fracion´aria deste n´umero. Escreva um programa que chama esta fun¸c˜ao.
+//Prot´otipo:
+//void frac(float num, int* inteiro, float* frac);
 
 
-if(N1>N2){
-printf ("Ordem crescente: %d,%d",N2,N1);
-	
-} else{
-	printf ("Ordem crescente: %d, %d",N1,N2);
+void frac(float num, int* inteiro, float* frac) {
+    *inteiro = (int) num;            
+    *frac = num - *inteiro;          
 }
-return 0;
+
+int main() {
+	setlocale(LC_ALL,"Portuguese");
+    float numero, parte_fracionaria;
+    int parte_inteira;
+
+    
+    printf("Digite um número real: ");
+    scanf("%f", &numero);
+
+    
+    frac(numero, &parte_inteira, &parte_fracionaria);
+
+    
+    printf("Parte inteira: %d\n", parte_inteira);
+    printf("Parte fracionária: %.3f\n", parte_fracionaria);
+
+    return 0;
 }

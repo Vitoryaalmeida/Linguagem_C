@@ -1,23 +1,19 @@
-#include<stdio.h>
+#include <stdio.h>
+#include<locale.h>
 
-int main (){
-	
-	//Ler o ano atual e o ano de nascimento de uma pessoa. Escrever uma mensagem que diga se ela podera ou
-//nao votar este ano (nao e necessario considerar o mes em que a pessoa nasceu).
+//Crie um programa que contenha uma matriz de float contendo 3 linhas e 3 colunas. Imprima o endere¸co de
+//cada posi¸c˜ao dessa matriz.
+int main() {
+	int i, j;
+	setlocale(LC_ALL,"Portuguese");
+    float matriz[3][3];  
 
-int anonascimento;
-printf("Digite o ano do nascimento: ");
-scanf("%d",&anonascimento);
+    
+    for (i = 0; i < 3; i++) {
+        for ( j = 0; j < 3; j++) {
+            printf("Endereço do elemento matriz[%d][%d]: %p\n", i, j, (void*)&matriz[i][j]);
+        }
+    }
 
-//2024
-// 16 ANOS PODE VOTAR MAS NAO E OBRIGATORIO
-
-if (2024-anonascimento<=15){
-	printf("NAO PODE VOTAR ESSE ANO");
-} else{
- printf ("PODE VOTAR ESSE ANO");
+    return 0;
 }
-return 0;
-
-}
-
