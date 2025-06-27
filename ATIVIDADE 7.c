@@ -1,32 +1,23 @@
+//QUESTÃO 7//
 #include <stdio.h>
-#include<locale.h>
-
-//Escreva uma fun¸c˜ao que dado um n´umero real passado como parˆametro, retorne a parte inteira e a parte
-//fracion´aria deste n´umero. Escreva um programa que chama esta fun¸c˜ao.
-//Prot´otipo:
-//void frac(float num, int* inteiro, float* frac);
-
-
-void frac(float num, int* inteiro, float* frac) {
-    *inteiro = (int) num;            
-    *frac = num - *inteiro;          
-}
 
 int main() {
-	setlocale(LC_ALL,"Portuguese");
-    float numero, parte_fracionaria;
-    int parte_inteira;
+    float nota;
+    int frequencia;
 
-    
-    printf("Digite um número real: ");
-    scanf("%f", &numero);
+    // Entrada de dados do estudante
+    printf("Digite a nota do estudante (0 a 10): ");
+    scanf("%f", &nota);
+    printf("Digite a frequencia do estudante (0 a 100): ");
+    scanf("%d", &frequencia);
 
-    
-    frac(numero, &parte_inteira, &parte_fracionaria);
-
-    
-    printf("Parte inteira: %d\n", parte_inteira);
-    printf("Parte fracionária: %.3f\n", parte_fracionaria);
+    // Avaliação com uma única condição if
+    if (nota >= 7 && frequencia >= 75) {
+        printf("Estudante aprovado!\n");
+    } else {
+        printf("Estudante reprovado.\n");
+    }
 
     return 0;
 }
+

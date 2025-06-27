@@ -1,32 +1,51 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include<locale.h>
 
+typedef struct Aluno {
+    char nome[100];
+    int faltas;
+    float nota;
+} aluno_t;
+
 int main() {
-    //Escreva um programa que declare um inteiro, um real e um char, e ponteiros para inteiro, real, e char. Associe
-//as vari´aveis aos ponteiros (use &). Modifique os valores de cada vari´avel usando os ponteiros. Imprima os
-//valores das vari´aveis antes e ap´os a modifica¸c˜ao.
-   setlocale(LC_ALL,"Portuguese");
-    int inteiro = 5;
-    float real = 3.14;
-    char caractere = 'A';
+	setlocale(LC_ALL,"Portuguese");
+    aluno_t *novo_aluno = (aluno_t *)malloc(sizeof(aluno_t)); // Alocação dinâmica de memória
+    if (novo_aluno == NULL) {
+        printf("Erro ao alocar memória!\n");
+        return 1; // Termina o programa em caso de erro
+    }
 
-    int *p_inteiro = &inteiro;
-    float *p_real = &real;
-    char *p_caractere = &caractere;
+    // Entrada dos dados do aluno
+    printf("Digite o nome do aluno: ");
+    fgets(novo_aluno->nome, sizeof(novo_aluno->nome), stdin);
+    novo_aluno->nome[strcspn(novo_aluno->nome, "\n")] = '\0'; // Remove o '\n' do final
 
-    printf("Antes da modificação:\n");
-    printf("Inteiro: %d\n", inteiro);
-    printf("Real: %.2f\n", real);
-    printf("Caractere: %c\n", caractere);
+    printf("Digite o número de faltas do aluno: ");
+    scanf("%d", &novo_aluno->faltas);
 
-    *p_inteiro = 10;
-    *p_real = 6.28;
-    *p_caractere = 'B';
-    
-    printf("\nApós a modificação:\n");
-    printf("Inteiro: %d\n", inteiro);
-    printf("Real: %.2f\n", real);
-    printf("Caractere: %c\n", caractere);
+    printf("Digite a nota do aluno: ");
+    scanf("%f", &novo_aluno->nota);
+
+    // Exibição dos dados do aluno
+    printf("\n=== Dados do Aluno ===\n");
+    printf("Nome: %s\n", novo_aluno->nome);
+    printf("Faltas: %d\n", novo_aluno->faltas);
+    printf("Nota: %.2f\n", novo_aluno->nota);
+
+    // Verificação de aprovação
+    if (novo_aluno->faltas > 25) {
+        printf("Resultado: Reprovado por faltas.\n");
+    } else if (novo_aluno->nota < 6.0) {
+        printf("Resultado: Reprovado por nota.\n");
+    } else {
+        printf("Resultado: Aprovado!\n");
+    }
+
+    // Liberação da memória alocada
+    free(novo_aluno);
 
     return 0;
 }
+
